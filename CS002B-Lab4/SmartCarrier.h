@@ -15,7 +15,7 @@ public:
 	std::string GetCarrierName();
 private:
 	std::string carrier_name_;
-	std::map<std::string, std::vector<Message>> accounts_map_;
+	std::map<std::string, std::vector<Message*>> accounts_map_;
 
 	void Menu();
 	void GetChoice();

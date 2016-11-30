@@ -1,5 +1,9 @@
+#include <iostream>
+#include <set>
 #include "SmartCarrier.h"
-#include "Message.h"
+#include "TextMessage.h"
+#include "VoiceMessage.h"
+#include "MediaMessage.h"
 SmartCarrier::SmartCarrier(){
 }
 SmartCarrier::SmartCarrier(std::string carrier_name) :
@@ -14,8 +18,24 @@ std::string SmartCarrier::GetCarrierName() {
 	return carrier_name_;
 }
 void SmartCarrier::Init() {
-	//upload data to map of strings(phone numbers)/vectors(types of messages)
-	
+	std::set<std::string> phone_numbers = {"650-267-1289","408-235-1500","650-781-7900"
+										  ,"415-298-2162","945-890-5913","408-720-0012"
+										  ,"650-230-9912","408-462-7890","415-902-9581"
+										  ,"310-290-1666"};
+	for (std::set<std::string>::iterator iter = phone_numbers.begin(); iter != phone_numbers.end(); ++iter) {
+		//STOPPED HERE USING ITER TO POTENTIALLY MAKE ADDING OBJECTS MUCH EASIER
+	}
+	TextMessage *text_message = new TextMessage("650-267-1289", "650-345-9001", "Do you want to learn how to program in C++?");
+	accounts_map_["650-267-1289"].push_back(text_message);
+	text_message = new TextMessage("650-267-1289", "650-345-9001", "What do you know already?");
+	accounts_map_["650-267-1289"].push_back(text_message);
+	std::cout << *dynamic_cast<TextMessage*>(accounts_map_["650-267-1289"].at(0)); std::cout << std::endl;
+	std::cout << *dynamic_cast<TextMessage*>(accounts_map_["650-267-1289"].at(1)); std::cout << std::endl;
+	std::cout << *dynamic_cast<TextMessage*>(accounts_map_["650-267-1289"].at(0)); std::cout << std::endl;
+
+
+	std::cout << "";
+	std::cout << "\n";
 }
 void SmartCarrier::StartService() {
 	//loop which gives user options
