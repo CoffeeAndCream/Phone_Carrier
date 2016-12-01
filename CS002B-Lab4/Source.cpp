@@ -7,6 +7,7 @@
 int main() {
 	SmartCarrier* carrier = new SmartCarrier("FOOTHILL WIRELESS");
 	carrier->Init();
+	carrier->StartService();
 	getchar();
 	return 0;
 }

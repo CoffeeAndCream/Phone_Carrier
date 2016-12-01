@@ -11,6 +11,7 @@ public:
 	std::string GetTextMessage();
 	virtual double ComputeCharge();
 	friend std::ostream& operator<<(std::ostream&, TextMessage&);
+	double GetTotalCharge();
 private:
 	std::string text_message_;
 	double total_charge_ = 0.0;

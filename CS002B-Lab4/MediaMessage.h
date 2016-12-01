@@ -11,6 +11,7 @@ public:
 	int GetMediaSize();
 	virtual double ComputeCharge();
 	friend std::ostream& operator<<(std::ostream&, MediaMessage&);
+	double GetTotalCharge();
 private:
 	int size_;
 	double total_charge_ = 0.0;

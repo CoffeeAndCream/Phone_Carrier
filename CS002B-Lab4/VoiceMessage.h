@@ -11,6 +11,7 @@ public:
 	int GetTime();
 	virtual double ComputeCharge();
 	friend std::ostream& operator<<(std::ostream&, VoiceMessage&);
+	double GetTotalCharge();
 private:
 	int time_in_seconds_;
 	double total_charge_ = 0.0;

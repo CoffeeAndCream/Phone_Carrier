@@ -12,8 +12,10 @@ public:
 	std::string GetReceiverNumber();
 	virtual double ComputeCharge() = 0;
 	bool operator==(const Message&);
+	virtual double GetTotalCharge() = 0;
 private:
 	std::string sender_number_;
 	std::string receiver_number_;
+	double total_charge_ = 0;
 };
 #endif

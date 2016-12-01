@@ -1,5 +1,5 @@
+#include <iostream>
 #include "VoiceMessage.h"
-
 VoiceMessage::VoiceMessage(){
 }
 VoiceMessage::VoiceMessage(std::string sender_number, std::string receiver_number, int time) :
@@ -7,6 +7,7 @@ VoiceMessage::VoiceMessage(std::string sender_number, std::string receiver_numbe
 	time_in_seconds_(time) {
 }
 VoiceMessage::~VoiceMessage(){
+	std::cout << "VoiceMessage with contents: " << *dynamic_cast<VoiceMessage*>(this) << " has been deleted.\n";
 }
 void VoiceMessage::SetTime(int time) {
 	time_in_seconds_ = time;
@@ -18,6 +19,13 @@ double VoiceMessage::ComputeCharge() {
 	return total_charge_ += (.015*time_in_seconds_);
 }
 std::ostream& operator<<(std::ostream& os, VoiceMessage& voice_message_obj) {
-	os << voice_message_obj.time_in_seconds_ << " " << voice_message_obj.total_charge_;
+	int seconds = voice_message_obj.time_in_seconds_;
+	int minutes = seconds / 60;
+	int hours = minutes / 60;
+	os << "TIME " << int(hours) << "-hours:" << int(minutes%60) << "-minutes:" << int(seconds%60) << "-seconds $" << voice_message_obj.total_charge_;
 	return os;
+}
+
+double VoiceMessage::GetTotalCharge() {
+	return total_charge_;
 }
